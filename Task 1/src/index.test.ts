@@ -4,6 +4,8 @@ import supertest from "supertest";
 const server = app.listen();
 const request = supertest.agent(server);
 
+console.error = () => {};
+
 describe("Task 1", () => {
   afterAll(() => {
     server.close();
@@ -28,5 +30,14 @@ describe("Task 1", () => {
         expect(res.body).toEqual({ hello: "world" });
         done();
       });
+  });
+
+  test("GET /error should throw 500 error", (done) => {
+    request.get("/error").expect(500, (err, res) => {
+      if (err) done(err);
+
+      expect(res.text).toEqual("Internal Server Error");
+      done();
+    });
   });
 });
