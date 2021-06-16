@@ -6,7 +6,8 @@
   "scripts": {
     "start": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
