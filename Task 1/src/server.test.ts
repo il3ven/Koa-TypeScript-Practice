@@ -1,4 +1,4 @@
-import app from "./index";
+import app from "./server";
 import supertest from "supertest";
 
 const server = app.listen();
@@ -6,11 +6,11 @@ const request = supertest.agent(server);
 
 console.error = () => {};
 
-describe("Task 1", () => {
-  afterAll(() => {
-    server.close();
-  });
+afterAll(() => {
+  server.close();
+});
 
+describe("Integration Test: Task 1", () => {
   test("GET /hello should return world", (done) => {
     request.get("/hello").expect(200, (err, res) => {
       if (err) done(err);
