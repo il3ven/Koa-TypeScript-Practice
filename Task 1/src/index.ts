@@ -19,4 +19,6 @@ router.get("/error", async (ctx) => {
 
 app.use(router.routes());
 
-app.listen(3000);
+if (require.main === module) app.listen(3000);
+
+export default app;
