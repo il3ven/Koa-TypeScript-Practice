@@ -1,10 +1,10 @@
 {
-  "name": "koa-typescript-practice",
+  "name": "@koa-typescript-practice/task_1",
   "version": "0.0.1",
   "description": "Project made for practice of koa.js and typescript",
-  "main": "dist/index.js",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
+    "start": "ts-node-dev --respawn --pretty --transpile-only src/server.ts",
     "build": "tsc",
     "test": "jest",
     "test:coverage": "jest --coverage"
