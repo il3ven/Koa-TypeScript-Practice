@@ -1,20 +1,14 @@
-import { Middleware, Next, DefaultContext, ParameterizedContext } from "koa";
+import { Next } from "koa";
+import { KoaContext } from "../interfaces/koaContext";
 
-interface MiddlewareContext extends DefaultContext {
-  authorization: string;
-}
-
-const authMiddleware: Middleware<MiddlewareContext, Next> = async (
-  ctx,
-  next
-) => {
+const authMiddleware = async (ctx: KoaContext, next: Next) => {
   if (ctx.request.header.authorization) {
     const bufferObj = Buffer.from(
       ctx.request.header.authorization.split(" ")[1],
       "base64"
     );
     const [username, password] = bufferObj.toString("utf-8").split(":");
-    ctx.authorization = "as";
+    ctx.authorization = { username, password };
     await next();
   } else {
     ctx.set("WWW-Authenticate", "Basic");
