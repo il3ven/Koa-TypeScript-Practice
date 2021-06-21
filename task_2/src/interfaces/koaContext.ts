@@ -1,5 +1,5 @@
-import { DefaultContext } from "koa";
+import { ParameterizedContext } from "koa";
 
-export interface KoaContext extends DefaultContext {
-  authorization: { username: string; password: string };
+export interface KoaContext extends ParameterizedContext {
+  authorization?: { username: string; password: string };
 }
