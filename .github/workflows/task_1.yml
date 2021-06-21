@@ -2,27 +2,25 @@ name: Test Task 1
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - 'task_1/**'
+      - "task_1/**"
   pull_request:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - 'task_1/**'
-
-  workflow_dispatch:
+      - "task_1/**"
 
 jobs:
   Test:
     runs-on: ubuntu-latest
-    
+
     defaults:
       run:
         working-directory: task_1
 
     steps:
       - uses: actions/checkout@v2
-      
+
       - uses: actions/setup-node@v2.1.5
         with:
           node-version: 14.x
