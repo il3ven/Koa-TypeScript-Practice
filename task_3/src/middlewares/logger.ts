@@ -1,6 +1,6 @@
 // Winston Logger
 
-import { DefaultState, Middleware } from "koa";
+import { DefaultContext, DefaultState, Middleware } from "koa";
 import { createLogger, format, transports } from "winston";
 import { KoaContext } from "../interfaces/KoaContext";
 
@@ -22,7 +22,10 @@ if (process.env.NODE_ENV !== "production") {
   );
 }
 
-const loggerMiddleware: Middleware<DefaultState, KoaContext> = (ctx, next) => {
+const loggerMiddleware: Middleware<DefaultState, DefaultContext> = (
+  ctx,
+  next
+) => {
   ctx.logger = logger;
   next();
 };
