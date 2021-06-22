@@ -9,4 +9,6 @@ app.use((ctx) => {
   ctx.body = `The password ${ctx.authorization?.password} for ${ctx.authorization?.username} is correct.`;
 });
 
-app.listen(3000);
+if (require.main === module) app.listen(3000);
+
+export default app;
