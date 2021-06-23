@@ -12,7 +12,6 @@ app.use(async (ctx: KoaContext, next) => {
     const t1 = performance.now();
     ctx.body.data.factorial.timeTaken = t1 - t0;
   } catch (err) {
-    console.log(err.message);
     ctx.status = err.status;
     ctx.type = "application/json";
     ctx.body = err.error;
