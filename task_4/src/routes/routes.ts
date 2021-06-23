@@ -37,7 +37,7 @@ const generateError = (reason: string, message: string, details: any = {}) => {
   };
 };
 
-router.get("/api/v1/factorial/:number", (ctx: KoaContext) => {
+const factorialRoute = (ctx: KoaContext) => {
   const { number } = ctx.params;
 
   const num = parseInt(number);
@@ -58,6 +58,9 @@ router.get("/api/v1/factorial/:number", (ctx: KoaContext) => {
       },
     },
   };
-});
+};
 
+router.get("/api/v1/factorial/:number", factorialRoute);
+
+export { factorialRoute, generateError }; // For testing
 export default router;
